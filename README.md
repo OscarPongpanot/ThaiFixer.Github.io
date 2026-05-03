@@ -1,6 +1,6 @@
 # 🚀 ThaiFixer: Intelligent Thai-English Spell & Language Corrector
 
-**ThaiFixer** คือโปรแกรมอรรถประโยชน์ (Utility Tool) ที่ออกแบบมาเพื่อแก้ปัญหาการพิมพ์ที่พบบ่อยในชีวิตประจำวัน โดยใช้เทคนิค **Natural Language Processing (NLP)** เข้ามาช่วยวิเคราะห์และแก้ไขข้อความโดยอัตโนมัติ ไม่ว่าจะเป็นการลืมสลับภาษา (Keyboard Layout Trap) หรือการสะกดผิดตามเสียงอ่าน (Phonetic Typo)
+>**ThaiFixer** คือโปรแกรมอรรถประโยชน์ (Utility Tool) ที่ออกแบบมาเพื่อแก้ปัญหาการพิมพ์ที่พบบ่อยในชีวิตประจำวัน โดยใช้เทคนิค **Natural Language Processing (NLP)** เข้ามาช่วยวิเคราะห์และแก้ไขข้อความโดยอัตโนมัติ ไม่ว่าจะเป็นการลืมสลับภาษา (Keyboard Layout Trap) หรือการสะกดผิดตามเสียงอ่าน (Phonetic Typo)
 
 ---
 
