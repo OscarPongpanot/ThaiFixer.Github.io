@@ -9,11 +9,12 @@
 1. [Pain Points: ปัญหา "พิมพ์ผิดชีวิตเปลี่ยน"](#pain-points)
 2. [วัตถุประสงค์และประโยชน์ที่คาดว่าจะได้รับ](#objectives)
 3. [เครื่องมือและเทคโนโลยี (Development Stack)](#tech-stack)
-4. [คุณสมบัติเด่นของโปรแกรม (Core Features)](#core-features)
-5. [โครงสร้างซอฟต์แวร์ (Software Architecture)](#architecture)
-6. [Comparison: ThaiFixer vs RightLang](#comparison)
-7. [ปัญหาและข้อจำกัดในปัจจุบัน (Known Issues)](#limitations)
-8. [สิ่งที่ต้องการนำไปต่อยอด (Future Works)](#future-works)
+4. [โครงสร้างและสถาปัตยกรรมซอฟต์แวร์ (Software Architecture)](#architecture)
+5. [คุณสมบัติเด่นของโปรแกรม (Core Features)](#core-features)
+6. [โครงสร้างซอฟต์แวร์ (Software Architecture)](#architecture)
+7. [Comparison: ThaiFixer vs RightLang](#comparison)
+8. [ปัญหาและข้อจำกัดในปัจจุบัน (Known Issues)](#limitations)
+9. [สิ่งที่ต้องการนำไปต่อยอด (Future Works)](#future-works)
 
 ---
 
@@ -53,23 +54,31 @@
 
 ---
 
+## 🏗️ โครงสร้างและสถาปัตยกรรมซอฟต์แวร์ (Software Architecture) <a name="architecture"></a>
+
+สถาปัตยกรรมของโปรเจกต์ถูกออกแบบในลักษณะ **Modular Architecture** โดยแบ่งออกเป็น 4 ส่วนประกอบหลักที่ทำงานประสานกันเปรียบเสมือนการทำงานของระบบร่างกาย:
+
+1.  **`smart_engine.py` (The Brain - สมองส่วนกลาง):**
+    *   เป็นส่วนประมวลผลหลัก (Core Logic) ที่ใช้เทคนิค Lexical Analysis และ Statistical NLP[cite: 4]
+    *   ทำหน้าที่วิเคราะห์ข้อความ ตรวจสอบภาษา กู้คืนข้อความต่างดาว และแก้ไขคำผิดโดยอัตโนมัติผ่านพจนานุกรมและความถี่คำ[cite: 4]
+2.  **`keyboard_listener.py` (The Senses - ประสาทสัมผัส):**
+    *   ทำหน้าที่เป็น Input & Event Listener คอยเฝ้าสังเกตการณ์การพิมพ์ (Keyboard Hooking)[cite: 4]
+    *   ดักจับคีย์ลัด ควบคุมโหมดการทำงาน จำลองการสั่งงานคีย์บอร์ด (Virtual Keyboard Control) และจัดการหน่วยความจำชั่วคราว (Typed Buffer Management)[cite: 4]
+3.  **`notification.py` (The Feedback - การสื่อสาร):**
+    *   ส่วนติดต่อผู้ใช้เชิงโต้ตอบ (Interactive UI)[cite: 4]
+    *   ทำหน้าที่สร้างหน้าต่าง Popup แจ้งเตือนแบบโปร่งแสง (Translucent Overlay) เพื่อรายงานผลและยืนยันการแก้ไขข้อความให้ผู้ใช้ทราบในทันที โดยมีระบบ Auto-Hide Mechanism[cite: 4]
+4.  **`ThaiFixer.py` (The Controller - ศูนย์กลางการควบคุม):**
+    *   เป็นจุดเริ่มต้นของโปรแกรม (Application Entry Point) ที่รวบรวมการทำงานของ Engine, Listener และ UI เข้าด้วยกัน[cite: 4]
+    *   จัดการโหมดการทำงานผ่านแถบสถานะระบบ (System Tray) และควบคุมการสื่อสารข้อมูลระหว่างโมดูลด้วยสถาปัตยกรรมแบบ Event-Driven (Signal-Slot Mechanism)[cite: 4]
+
+---
+
 ## ✨ คุณสมบัติเด่นของโปรแกรม (Core Features) <a name="core-features"></a>
 
 *   **Lexical Transformation:** แปลง Unicode Sequence ระหว่างไทย-อังกฤษได้อย่างแม่นยำ (Keyboard Layout Mapping)[cite: 1, 4]
 *   **Sliding Window Word Tokenization:** ใช้วิธี "รวบกลุ่มคำ" (Chunking) เพื่อประเมินความถูกต้องจากบริบท ป้องกันปัญหาการตัดคำผิดพลาด[cite: 1, 4]
 *   **Dual-Language Validation:** ระบบวิเคราะห์ความถูกต้องของประโยค (Threshold 80%) เพื่อตัดสินใจสลับภาษาอัตโนมัติ[cite: 4]
 *   **Interactive Notification:** ระบบ Popup แจ้งเตือนผลการแก้ไขแบบ Real-time โดยไม่รบกวนการทำงาน[cite: 4]
-
----
-
-## 🏗️ โครงสร้างซอฟต์แวร์ (Software Architecture) <a name="architecture"></a>
-
-โปรแกรมประกอบด้วย 4 ส่วนสำคัญที่ทำงานประสานกัน:
-
-1.  **`smart_engine.py` (The Brain):** วิเคราะห์ข้อความ ตรวจสอบภาษา และแก้ไขคำผิดโดยใช้กฎทางสถิติและพจนานุกรม[cite: 4]
-2.  **`keyboard_listener.py` (The Senses):** ดักจับเหตุการณ์การพิมพ์ (Keyboard Hooking) และจัดการหน่วยความจำชั่วคราว (Typed Buffer)[cite: 4]
-3.  **`notification.py` (The Feedback):** แสดงหน้าต่างแจ้งเตือนการแก้ไขข้อความผ่านระบบ Popup โปร่งแสง[cite: 4]
-4.  **`ThaiFixer.py` (The Controller):** จุดเริ่มต้นของโปรแกรม จัดการโหมดการทำงานและ UI ผ่าน System Tray[cite: 4]
 
 ---
 
