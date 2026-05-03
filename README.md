@@ -65,20 +65,6 @@
 | **3. `notification.py`**<br>(The Feedback) | **การสื่อสาร** | • ส่วนติดต่อผู้ใช้เชิงโต้ตอบ (Interactive UI) ในรูปแบบหน้าต่าง Popup โปร่งแสง (Translucent Overlay)<br>• รายงานผลและยืนยันการแก้ไขข้อความให้ผู้ใช้ทราบทันที พร้อมระบบซ่อนอัตโนมัติ (Auto-Hide Mechanism) |
 | **4. `ThaiFixer.py`**<br>(The Controller) | **ศูนย์กลางควบคุม** | • จุดเริ่มต้นโปรแกรม (Application Entry Point) รวบรวมการทำงานของ Engine, Listener และ UI<br>• จัดการโหมดผ่าน System Tray และควบคุมการสื่อสารระหว่างโมดูลด้วยสถาปัตยกรรม Event-Driven |
 
-
-1.  **`smart_engine.py` (The Brain - สมองส่วนกลาง):**
-    *   เป็นส่วนประมวลผลหลัก (Core Logic) ที่ใช้เทคนิค Lexical Analysis และ Statistical NLP
-    *   ทำหน้าที่วิเคราะห์ข้อความ ตรวจสอบภาษา กู้คืนข้อความต่างดาว และแก้ไขคำผิดโดยอัตโนมัติผ่านพจนานุกรมและความถี่คำ
-2.  **`keyboard_listener.py` (The Senses - ประสาทสัมผัส):**
-    *   ทำหน้าที่เป็น Input & Event Listener คอยเฝ้าสังเกตการณ์การพิมพ์ (Keyboard Hooking)
-    *   ดักจับคีย์ลัด ควบคุมโหมดการทำงาน จำลองการสั่งงานคีย์บอร์ด (Virtual Keyboard Control) และจัดการหน่วยความจำชั่วคราว (Typed Buffer Management)
-3.  **`notification.py` (The Feedback - การสื่อสาร):**
-    *   ส่วนติดต่อผู้ใช้เชิงโต้ตอบ (Interactive UI)
-    *   ทำหน้าที่สร้างหน้าต่าง Popup แจ้งเตือนแบบโปร่งแสง (Translucent Overlay) เพื่อรายงานผลและยืนยันการแก้ไขข้อความให้ผู้ใช้ทราบในทันที โดยมีระบบ Auto-Hide Mechanism
-4.  **`ThaiFixer.py` (The Controller - ศูนย์กลางการควบคุม):**
-    *   เป็นจุดเริ่มต้นของโปรแกรม (Application Entry Point) ที่รวบรวมการทำงานของ Engine, Listener และ UI เข้าด้วยกัน
-    *   จัดการโหมดการทำงานผ่านแถบสถานะระบบ (System Tray) และควบคุมการสื่อสารข้อมูลระหว่างโมดูลด้วยสถาปัตยกรรมแบบ Event-Driven (Signal-Slot Mechanism)
-
 ---
 
 ## ✨ คุณสมบัติเด่นของโปรแกรม (Core Features) <a name="core-features"></a>
