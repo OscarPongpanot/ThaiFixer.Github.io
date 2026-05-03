@@ -1,0 +1,5 @@
+pythainlp
+pyspellchecker
+nltk
+pyside6
+pynput
